@@ -6,25 +6,36 @@
 using namespace cv;
 using namespace std;
 int main() {
-	clock_t start, end;
-	double cpu_time_used;
-	start = clock();
-	const char* img_path = "F:/photo/xam.jpg";
-	Mat in_img = imread(img_path, cv::IMREAD_GRAYSCALE);
-	imshow("int_img", in_img);
-	Mat out_img(in_img.rows, in_img.cols, CV_8UC3);
-	unsigned char* indata = in_img.data;
-	unsigned char* outdata = out_img.data;
+    int num_iterations = 100;
+    double total_cpu_time = 0.0;
 
-	CHazeRemoval hr;
-	cout << hr.InitProc(in_img.cols, in_img.rows, in_img.channels()) << endl;
-	cout << hr.Process(indata, outdata, in_img.cols, in_img.rows, in_img.channels()) << endl;
-	cv::imwrite("F:/photo/ketqua/khu1.jpg", out_img);
-	imshow("out_img", out_img);
-	waitKey(0);
-	end = clock();
-	cpu_time_used = ((double)(end - start)) / CLOCKS_PER_SEC;
-	std::cout << "CPU time: " << cpu_time_used << " s" << std::endl;
+    for (int i = 0; i < num_iterations; i++) {
+        clock_t start, end;
+        double cpu_time_used;
+        start = clock();
 
-	return 0;
+        const char* img_path = "F:/photo/suong1.jpg";
+        Mat in_img = imread(img_path);
+
+        Mat out_img(in_img.rows, in_img.cols, CV_8UC3);
+        unsigned char* indata = in_img.data;
+        unsigned char* outdata = out_img.data;
+
+        CHazeRemoval hr;
+        cout << hr.InitProc(in_img.cols, in_img.rows, in_img.channels()) << endl;
+        cout << hr.Process(indata, outdata, in_img.cols, in_img.rows, in_img.channels()) << endl;
+
+        cv::imwrite("F:/photo/ketqua1/khu" + to_string(i + 1) + ".jpg", out_img);
+
+        end = clock();
+        cpu_time_used = ((double)(end - start)) / CLOCKS_PER_SEC;
+        total_cpu_time += cpu_time_used;
+
+        cout << "Iteration " << (i + 1) << " CPU time: " << cpu_time_used << " s" << endl;
+    }
+
+    double average_cpu_time = total_cpu_time / num_iterations;
+    cout << "Average CPU time: " << average_cpu_time << " s" << endl;
+
+    return 0;
 }
