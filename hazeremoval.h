@@ -2,6 +2,7 @@
 #define HAZE_REMOVAL_H
 
 #include "opencv2/opencv.hpp"
+
 #include <vector>
 
 typedef struct _pixel {

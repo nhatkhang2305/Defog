@@ -1,5 +1,6 @@
 #include "hazeremoval.h"
 #include "opencv2/opencv.hpp"
+
 #include <iostream>
 #include <ctime>
 
@@ -14,7 +15,7 @@ int main() {
         double cpu_time_used;
         start = clock();
 
-        const char* img_path = "F:/photo/suong1.jpg";
+        const char* img_path = "suong1.jpg";
         Mat in_img = imread(img_path);
 
         Mat out_img(in_img.rows, in_img.cols, CV_8UC3);
@@ -25,7 +26,7 @@ int main() {
         cout << hr.InitProc(in_img.cols, in_img.rows, in_img.channels()) << endl;
         cout << hr.Process(indata, outdata, in_img.cols, in_img.rows, in_img.channels()) << endl;
 
-        cv::imwrite("F:/photo/ketqua1/khu" + to_string(i + 1) + ".jpg", out_img);
+        cv::imwrite("ketqua1/khu" + to_string(i + 1) + ".jpg", out_img);
 
         end = clock();
         cpu_time_used = ((double)(end - start)) / CLOCKS_PER_SEC;
