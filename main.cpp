@@ -7,7 +7,7 @@
 using namespace cv;
 using namespace std;
 int main() {
-    int num_iterations = 100;
+    int num_iterations = 10;
     double total_cpu_time = 0.0;
 
     for (int i = 0; i < num_iterations; i++) {
