@@ -15,7 +15,7 @@ int main() {
         double cpu_time_used;
         start = clock();
 
-        const char* img_path = "SGP_Bing_085.jpeg";
+        const char* img_path = "0267_0.9_0.16.jpg";
         Mat in_img = imread(img_path);
 
         Mat out_img(in_img.rows, in_img.cols, CV_8UC3);

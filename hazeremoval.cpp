@@ -22,7 +22,7 @@ bool CHazeRemoval::InitProc(int width, int height, int nChannels) {
 
 	if (width > 0 && height > 0 && nChannels == 3) ret = true;
 	return ret;
-} //khoi tao gia tri bool ret cho biet tao co thanh cong khong // kieu bool là kieu chi co true or false
+} //khoi tao gia tri bool ret cho biet tao co thanh cong khong // kieu bool lï¿½ kieu chi co true or false
 
 bool CHazeRemoval::Process(const unsigned char* indata, unsigned char* outdata, int width, int height, int nChannels) {
 	bool ret = true;
@@ -34,7 +34,7 @@ bool CHazeRemoval::Process(const unsigned char* indata, unsigned char* outdata, 
 	channels = nChannels;
 
 	int radius = 7;
-	double omega = 0.95; // kieu so thuc
+	double omega = 0.7; // kieu so thuc
 	double t0 = 0.1;
 	vector<Pixel> tmp_vec; //khai bao 1 vecto chua doi tuong kieu pixel co ten la tmp_vec la 1 vecto trong luu tru 1 tap hop cac doi tuong pixel
 	Mat * p_src = new Mat(rows, cols, CV_8UC3, (void *)indata); //cap phat bo nho dong va gan no vao con tro va du lieu duoc khoi tao tu bo nho cua con tro indata
